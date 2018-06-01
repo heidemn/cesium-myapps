@@ -1,0 +1,164 @@
+{
+    "accessors": {
+        "accessor_position": {
+            "bufferView": "bufferView_rgbxyz_interleaved",
+            "byteOffset": 0,
+            "byteStride": 24,
+            "componentType": 5126,
+            "count": 441,
+            "max": [  10,  10,  10 ],
+            "min": [ -10, -10, -10 ],
+            "type": "VEC3"
+        },
+        "accessor_color": {
+            "bufferView": "bufferView_rgbxyz_interleaved",
+            "byteOffset": 12,
+            "byteStride": 24,
+            "componentType": 5126,
+            "count": 441,
+            "max": [  1,  1,  1 ],
+            "min": [  0,  0,  0 ],
+            "type": "VEC3"
+        }
+    },
+    "animations": {},
+    "asset": {
+        "generator": "collada2gltf@027f74366341d569dea42e9a68b7104cc3892054",
+        "premultipliedAlpha": true,
+        "profile": {
+            "api": "WebGL",
+            "version": "1.0.2"
+        },
+        "version": "1.0"
+    },
+    "bufferViews": {
+        "bufferView_rgbxyz_interleaved": {
+            "buffer": "buffer_rgbxyz_interleaved",
+            "byteLength": 10584,
+            "byteOffset": 0,
+            "target": 34962
+        }
+    },
+    "buffers": {
+        "buffer_rgbxyz_interleaved": {
+            "byteLength": 10584,
+            "type": "arraybuffer",
+            "uri": "sphere_xyz_rgb_interleaved.bin"
+        }
+    },
+    "materials": {
+        "Effect-Red": {
+            "name": "Red",
+            "technique": "technique0",
+            "values": {
+            }
+        }
+    },
+    "meshes": {
+        "Geometry-mesh002": {
+            "name": "Mesh",
+            "primitives": [
+                {
+                    "attributes": {
+                        "POSITION": "accessor_position",
+                        "COLOR": "accessor_color"
+                    },
+                    "material": "Effect-Red",
+                    "mode": 0
+                }
+            ]
+        }
+    },
+    "nodes": {
+        "Geometry-mesh002Node": {
+            "children": [],
+            "matrix": [
+                1, 0, 0, 0,
+                0, 1, 0, 0,
+                0, 0, 1, 0,
+                0, 0, 0, 1
+            ],
+            "meshes": [
+                "Geometry-mesh002"
+            ],
+            "name": "Mesh"
+        },
+        "node_1": {
+            "children": [
+                "Geometry-mesh002Node"
+            ],
+            "matrix": [
+                1, 0,  0, 0,
+                0, 0, -1, 0,
+                0, 1,  0, 0,
+                0, 0,  0, 1
+            ],
+            "name": "Y_UP_Transform"
+        }
+    },
+    "programs": {
+        "program_0": {
+            "attributes": [
+                "a_position",
+                "a_color"
+            ],
+            "fragmentShader": "ColorPoints_FS",
+            "vertexShader": "ColorPoints_VS"
+        }
+    },
+    "scene": "defaultScene",
+    "scenes": {
+        "defaultScene": {
+            "nodes": [
+                "node_1"
+            ]
+        }
+    },
+    "shaders": {
+        "ColorPoints_FS": {
+            "type": 35632,
+            "uri": "ColorPoints_FS.glsl"
+        },
+        "ColorPoints_VS": {
+            "type": 35633,
+            "uri": "ColorPoints_VS.glsl"
+        }
+    },
+    "skins": {},
+    "techniques": {
+        "technique0": {
+            "uniforms": {
+                "u_modelViewMatrix": "modelViewMatrix",
+                "u_projectionMatrix": "projectionMatrix"
+            },            
+            "attributes": {
+                "a_position": "position",
+                "a_color": "color"
+            },
+            "parameters": {
+                "modelViewMatrix": {
+                    "semantic": "MODELVIEW",
+                    "type": 35676
+                },
+                "projectionMatrix": {
+                    "semantic": "PROJECTION",
+                    "type": 35676
+                },
+                "position": {
+                    "semantic": "POSITION",
+                    "type": 35665
+                },
+                "color": {
+                    "semantic": "COLOR",
+                    "type": 35665
+                }
+            },
+            "program": "program_0",
+            "states": {
+                "enable": [
+                    2929
+                ]
+            }
+        }
+    }
+}

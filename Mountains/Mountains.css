@@ -1,0 +1,23 @@
+body {
+	color: #eee;
+	font-family: sans-serif;
+	font-size: 9pt;
+}
+
+#toolbar {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+
+	margin: 5px;
+	padding: 2px 5px;
+}
+
+/* #cesiumContainer {
+	max-width: 600px;
+} */
+
+.cesium-viewer-bottom {
+	pointer-events: none;
+	user-select: none;
+}
