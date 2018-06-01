@@ -35,23 +35,15 @@ var locSolitude = {
         roll: 0.0
     }
 };
-// var locNotSolitude1 = {
-//     destination:
-//         //Cesium.Cartesian3.fromRadians(0.15854686006620383, 0.8514700592239813, 642.5414036950415),
-//         Cesium.Cartesian3.fromDegrees(10.3616259, 48.6972844, 0.0),
-//      orientation: {
-//         heading: 0.1743334085738555,
-//         pitch: -0.6054740432887757,
-//         roll: 6.283185307179586
-// }};
 var locSolitude2 = {
- destination: Cesium.Cartesian3.fromRadians
- (0.15865324078031692, 0.8514895282737008, 778.7003110082524),
- orientation: {
- heading: 4.699033167472921,
- pitch: -0.49804187544369105,
- roll: 6.283185307179586
- }};
+    destination: Cesium.Cartesian3.fromRadians
+        (0.15865324078031692, 0.8514895282737008, 778.7003110082524),
+    orientation: {
+        heading: 4.699033167472921,
+        pitch: -0.49804187544369105,
+        roll: 6.283185307179586
+    }
+};
 
 var locDischingen = {
      destination: Cesium.Cartesian3.fromRadians
@@ -60,25 +52,26 @@ var locDischingen = {
          heading: 0.2071936605300566,
          pitch: -1.057209649239752,
          roll: 6.283185307179586
-}};
-
+    }
+};
 var locDischingen2 = {
-destination: Cesium.Cartesian3.fromRadians
-(0.18085320653894993, 0.849906141531208, 651.9098072220992),
-orientation: {
-heading: 6.103145207244639,
-pitch: -0.6898048370557279,
-roll: 6.283185307179586
-}};
-
+    destination: Cesium.Cartesian3.fromRadians
+        (0.18085320653894993, 0.849906141531208, 651.9098072220992),
+    orientation: {
+        heading: 6.103145207244639,
+        pitch: -0.6898048370557279,
+        roll: 6.283185307179586
+    }
+};
 var locDischingen3 = {
-destination: Cesium.Cartesian3.fromRadians
-(0.18089854441930955, 0.8499329125971656, 546.608496822056),
-orientation: {
-heading: 4.653580680757289,
-pitch: -0.06455501887049397,
-roll: 6.283185307179586
-}};
+    destination: Cesium.Cartesian3.fromRadians
+        (0.18089854441930955, 0.8499329125971656, 546.608496822056),
+    orientation: {
+        heading: 4.653580680757289,
+        pitch: -0.06455501887049397,
+        roll: 6.283185307179586
+    }
+};
 
 
 viewer.camera.setView(
@@ -92,31 +85,20 @@ viewer.camera.setView(
 //     }
 // })
 
-
-
-
 //0.18084261010091865, 0.8499308407127765
 //10.3615183149, 48.6974500508
-var position = isDischingen ?
-               Cesium.Cartesian3.fromDegrees(10.3615183149 - 0.00058, 48.6974500508 - 0.00048, 46.2) : // Dischingen (v2)
-               Cesium.Cartesian3.fromDegrees(9.08385, 48.787800, 654.0); // Solitude
-//var position = Cesium.Cartesian3.fromDegrees(10.3616259, 48.6972844, 45.0); // Dischingen (v1)
-//var position = Cesium.Cartesian3.fromDegrees(9.0838, 48.787800, 650);
-//var position = Cesium.Cartesian3.fromDegrees(9.0843, 48.786889, 650);
-var heading = Cesium.Math.toRadians(0); //(213.0)4
-var pitch = Cesium.Math.toRadians(0);
-var roll = Cesium.Math.toRadians(-90);
-
-// CESIUM_1.45
-//var orientation = Cesium.Transforms.headingPitchRollQuaternion(position, heading, pitch, roll);
-var hpr = new Cesium.HeadingPitchRoll(heading, pitch, roll);
-var orientation = Cesium.Transforms.headingPitchRollQuaternion(position, hpr);
-// CESIUM_1.45
-
 
 var entity;
 
 if (isDischingen) {
+    var position = Cesium.Cartesian3.fromDegrees(10.3615183149 - 0.00058, 48.6974500508 - 0.00048, 46.2); // Dischingen (v2)
+    //var position = Cesium.Cartesian3.fromDegrees(10.3616259, 48.6972844, 45.0); // Dischingen (v1)
+    var heading = Cesium.Math.toRadians(0); //(213.0)4
+    var pitch = Cesium.Math.toRadians(0);
+    var roll = Cesium.Math.toRadians(-90);
+    var hpr = new Cesium.HeadingPitchRoll(heading, pitch, roll);
+    var orientation = Cesium.Transforms.headingPitchRollQuaternion(position, hpr);
+
     entity = viewer.entities.add({
         position : position,
         orientation: orientation,
@@ -135,8 +117,17 @@ if (isDischingen) {
     }
     console.log('Resolution:', res);
 
+    var position = Cesium.Cartesian3.fromDegrees(9.08385, 48.787800, 654.0); // Solitude
+    var heading = Cesium.Math.toRadians(213.0);
+    var pitch = Cesium.Math.toRadians(0);
+    var roll = Cesium.Math.toRadians(0);
+    var hpr = new Cesium.HeadingPitchRoll(heading, pitch, roll);
+    var orientation = Cesium.Transforms.headingPitchRollQuaternion(position, hpr);
+
     entity = viewer.entities.add({
-        position : Cesium.Cartesian3.fromDegrees(9.0843, 48.786889, 650), //546),
+        //position : Cesium.Cartesian3.fromDegrees(9.0843, 48.786889, 650), //546),
+        position : position,
+        orientation: orientation,
         model : {
             uri : '../_pointclouds/solitude/solitude-' + res + '.gltf'
             //uri : '../_pointclouds/xb2testproj/funpark.gltf'
@@ -148,13 +139,7 @@ if (isDischingen) {
     });
 }
 
-
-
-
-//viewer.trackedEntity = entity;
-
-
-
+// viewer.trackedEntity = entity;
 
 // window.addEventListener('load', function() {
 //     console.log('onload');
