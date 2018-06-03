@@ -66,3 +66,55 @@ scene.primitives.add(new Cesium.Primitive({
         translucent : false
     })
 }));
+
+
+
+
+
+if (true) {
+    var pos0 =  new Cesium.Cartesian3(0,0,0); // Cesium.Cartesian3.fromDegrees(9, 41);
+    var scale = 1000;
+
+    var lon0 = 9.0843;
+    var lat0 = 48.786889;
+    var eps = 0.001;
+    var pink = false;
+    for (var lon = lon0 - 0.2; lon <= lon0 + 0.25 + eps; lon += 0.05) {
+        for (var lat = lat0 - 0.1; lat <= lat0 + 0.1 + eps; lat += 0.05) {
+            pink = !pink;
+            var points = scene.primitives.add(new Cesium.PointPrimitiveCollection());
+            var center = Cesium.Cartesian3.fromDegrees(lon,  lat);
+            points.modelMatrix = Cesium.Transforms.eastNorthUpToFixedFrame(center);    
+            // sqrt_3:  30k -> 31   /   60k -> 39
+            for (var i = 0; i < 30000; i++) {
+                points.add({
+                        position : new Cesium.Cartesian3(
+                            pos0.x + Math.random()*scale, 
+                            pos0.y + Math.random()*scale, 
+                            pos0.z + Math.random()*scale),
+                        color : pink ? Cesium.Color.PINK : Cesium.Color.CYAN,
+                        outlineColor : Cesium.Color.TRANSPARENT,
+                        outlineWidth : 0.0,
+                        pixelSize : 2.0
+                    });
+            }
+        }
+    }
+    
+} else {
+    var points = scene.primitives.add(new Cesium.PointPrimitiveCollection());
+    for (var longitude = -180; longitude < 180; longitude++) {
+        var color = Cesium.Color.PINK;
+        if ((longitude % 2) === 0) {
+            color = Cesium.Color.CYAN;
+        }
+
+        for (var latitude = -90; latitude < 90; latitude++) {
+            points.add({
+                position : Cesium.Cartesian3.fromDegrees(longitude, latitude),
+                color : color
+            });
+        }
+    }
+}
+

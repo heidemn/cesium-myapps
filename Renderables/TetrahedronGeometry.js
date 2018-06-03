@@ -137,7 +137,7 @@ TetrahedronGeometry.createGeometry = function() {
     return new Geometry({
         attributes : attributes,
         indices : indices,
-        primitiveType : PrimitiveType.TRIANGLES,
+        primitiveType : PrimitiveType.TRIANGLES, //.POINTS, //TRIANGLES,
         boundingSphere : new BoundingSphere(new Cartesian3(0.0, 0.0, 0.0), 1.0)
     });
 };

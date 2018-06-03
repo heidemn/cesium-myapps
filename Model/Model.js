@@ -139,6 +139,14 @@ if (isDischingen) {
     });
 }
 
+// No automatic render update when model is ready (requestRenderMode = true)
+//setTimeout(scene.requestRender.bind(scene), 1000);
+//setTimeout(scene.requestRender.bind(scene), 2000);
+setTimeout(scene.requestRender.bind(scene), 2000);
+setTimeout(scene.requestRender.bind(scene), 4000); // This one works for me. Others are there as a precaution.
+setTimeout(scene.requestRender.bind(scene), 6000);
+setTimeout(scene.requestRender.bind(scene), 8000);
+
 // viewer.trackedEntity = entity;
 
 // window.addEventListener('load', function() {

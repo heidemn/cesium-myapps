@@ -71,6 +71,8 @@ var viewer = new Cesium.Viewer('cesiumContainer', {
     //selectedImageryProviderViewModel: imageryViewModels[1],
     // UPDATE_1.45
 
+    requestRenderMode : true,
+
     homeButton: false,
     animation: false,
     timeline: false,
@@ -91,3 +93,5 @@ var viewer = new Cesium.Viewer('cesiumContainer', {
 
 var scene = viewer.scene;
 var canvas = viewer.canvas;
+
+scene.debugShowFramesPerSecond = true;
