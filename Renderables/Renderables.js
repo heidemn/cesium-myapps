@@ -53,9 +53,9 @@ Cesium.Matrix4.multiplyByUniformScale(modelMatrix, 500000.0, modelMatrix);
 var instance = new Cesium.GeometryInstance({
     geometry : new TetrahedronGeometry(),
     modelMatrix : modelMatrix,
-    attributes : {
-        color : Cesium.ColorGeometryInstanceAttribute.fromColor(Cesium.Color.WHITE)
-    }
+    // attributes : {
+    //     color : Cesium.ColorGeometryInstanceAttribute.fromColor(Cesium.Color.WHITE)
+    // }
 });
 
 scene.primitives.add(new Cesium.Primitive({

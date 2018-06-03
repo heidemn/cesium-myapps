@@ -24,6 +24,36 @@ TetrahedronGeometry.createGeometry = function() {
     var negativeOneThird = -1.0 / 3.0;
     var rootSixOverThree = Math.sqrt(6.0) / 3.0;
     
+    var colors = new Uint8Array(4 * 3 * 4);
+    // back triangle
+    for (let i = 0; i < 3; i++) {
+        colors[4*i + 0] = 255;
+        colors[4*i + 1] = 0;
+        colors[4*i + 2] = 0;
+        colors[4*i + 3] = 255;
+    }
+    // left triangle
+    for (let i = 3; i < 6; i++) {
+        colors[4*i + 0] = 255;
+        colors[4*i + 1] = 255;
+        colors[4*i + 2] = 0;
+        colors[4*i + 3] = 255;
+    }
+    // right triangle
+    for (let i = 6; i < 9; i++) {
+        colors[4*i + 0] = 0;
+        colors[4*i + 1] = 255;
+        colors[4*i + 2] = 0;
+        colors[4*i + 3] = 255;
+    }
+    // bottom triangle
+    for (let i = 9; i < 12; i++) {
+        colors[4*i + 0] = 0;
+        colors[4*i + 1] = 0;
+        colors[4*i + 2] = 255;
+        colors[4*i + 3] = 255;
+    }
+
     var positions = new Float64Array(4 * 3 * 3);
     // back triangle
     positions[0] = 0.0;
@@ -96,6 +126,11 @@ TetrahedronGeometry.createGeometry = function() {
             componentDatatype : ComponentDatatype.DOUBLE,
             componentsPerAttribute : 3,
             values : positions
+        }),
+        color : new GeometryAttribute({
+            componentDatatype : ComponentDatatype.UNSIGNED_BYTE,
+            componentsPerAttribute : 4,
+            values : colors
         })
     });
 
